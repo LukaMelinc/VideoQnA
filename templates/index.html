@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="container text-center">
+        <h1 class="display-4 mb-4">Video Q&A System</h1>
+        <p class="lead mb-4">
+            Extract insights from YouTube videos using AI. Add videos, ask questions, and get intelligent answers based on video transcripts.
+        </p>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <a href="{{ url_for('add_video') }}" class="btn btn-light btn-lg me-3 mb-2">
+                    <i class="bi bi-plus-circle"></i> Add Your First Video
+                </a>
+                <a href="{{ url_for('ask_question') }}" class="btn btn-outline-light btn-lg mb-2">
+                    <i class="bi bi-question-circle"></i> Ask Questions
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+                    <i class="bi bi-youtube text-primary" style="font-size: 3rem;"></i>
+                    <h5 class="card-title mt-3">Add YouTube Videos</h5>
+                    <p class="card-text">
+                        Simply paste YouTube URLs to extract and analyze video transcripts automatically.
+                    </p>
+                    <a href="{{ url_for('add_video') }}" class="btn btn-primary">Add Video</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+                    <i class="bi bi-brain text-primary" style="font-size: 3rem;"></i>
+                    <h5 class="card-title mt-3">AI-Powered Q&A</h5>
+                    <p class="card-text">
+                        Ask questions about video content and get intelligent answers using advanced AI models.
+                    </p>
+                    <a href="{{ url_for('ask_question') }}" class="btn btn-primary">Ask Question</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+                    <i class="bi bi-search text-primary" style="font-size: 3rem;"></i>
+                    <h5 class="card-title mt-3">Smart Search</h5>
+                    <p class="card-text">
+                        Find relevant information across all your videos with semantic search capabilities.
+                    </p>
+                    <a href="{{ url_for('list_videos') }}" class="btn btn-primary">View Videos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- How It Works -->
+<div class="container my-5">
+    <h2 class="text-center mb-5">How It Works</h2>
+    <div class="row">
+        <div class="col-md-3 text-center mb-4">
+            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                <span class="fw-bold">1</span>
+            </div>
+            <h5 class="mt-3">Add Videos</h5>
+            <p>Paste YouTube URLs to add videos to your knowledge base.</p>
+        </div>
+        <div class="col-md-3 text-center mb-4">
+            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                <span class="fw-bold">2</span>
+            </div>
+            <h5 class="mt-3">AI Processing</h5>
+            <p>The system extracts transcripts and creates searchable embeddings.</p>
+        </div>
+        <div class="col-md-3 text-center mb-4">
+            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                <span class="fw-bold">3</span>
+            </div>
+            <h5 class="mt-3">Ask Questions</h5>
+            <p>Type your questions about the video content.</p>
+        </div>
+        <div class="col-md-3 text-center mb-4">
+            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                <span class="fw-bold">4</span>
+            </div>
+            <h5 class="mt-3">Get Answers</h5>
+            <p>Receive intelligent answers with source references.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

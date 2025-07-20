@@ -17,3 +17,5 @@ huggingface_hub==0.15.1
 youtube-transcript-api==1.1.1
 yt_dlp==2025.6.30
 chromadb==1.0.15
+flask==2.3.3
+gunicorn==21.2.0

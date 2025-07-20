@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Add Video - Video Q&A System{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0"><i class="bi bi-plus-circle"></i> Add New Video</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="video_url" class="form-label">YouTube Video URL</label>
+                            <input type="url" class="form-control" id="video_url" name="video_url" 
+                                   placeholder="https://www.youtube.com/watch?v=..." required>
+                            <div class="form-text">
+                                Paste the full YouTube URL here. The system will automatically extract the transcript.
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="force_refresh" name="force_refresh">
+                                <label class="form-check-label" for="force_refresh">
+                                    Force refresh (re-extract transcript if video already exists)
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-download"></i> Add Video
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Help Section -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-info-circle"></i> Tips</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-check-circle text-success"></i> Make sure the video has captions/subtitles available</li>
+                        <li class="mb-2"><i class="bi bi-check-circle text-success"></i> Educational and informational videos work best</li>
+                        <li class="mb-2"><i class="bi bi-check-circle text-success"></i> Processing may take a few minutes for longer videos</li>
+                        <li class="mb-0"><i class="bi bi-check-circle text-success"></i> You can add multiple videos to build a knowledge base</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

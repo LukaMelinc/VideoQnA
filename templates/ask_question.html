@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Ask Question - Video Q&A System{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0"><i class="bi bi-question-circle"></i> Ask a Question</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="question" class="form-label">Your Question</label>
+                            <textarea class="form-control" id="question" name="question" rows="3" 
+                                      placeholder="What would you like to know about the videos?" required></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="show_sources" name="show_sources" checked>
+                                <label class="form-check-label" for="show_sources">
+                                    Show relevant sources with the answer
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-search"></i> Get Answer
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Answer Section -->
+            {% if answer %}
+            <div class="card mt-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="bi bi-chat-dots"></i> Answer</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ answer }}</p>
+                </div>
+            </div>
+            {% endif %}
+            
+            <!-- Sources Section -->
+            {% if sources %}
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-bookmark"></i> Relevant Sources</h5>
+                </div>
+                <div class="card-body">
+                    {% for source in sources %}
+                    <div class="source-card card mb-3">
+                        <div class="card-body">
+                            <h6 class="card-title">
+                                {{ source.metadata.get('video_title', 'Unknown Video') }}
+                                <small class="text-muted">by {{ source.metadata.get('uploader', 'Unknown') }}</small>
+                            </h6>
+                            {% if source.metadata.get('start_time') %}
+                            <p class="text-muted small">
+                                <i class="bi bi-clock"></i> 
+                                {{ (source.metadata.start_time // 60)|int }}:{{ '%02d'|format((source.metadata.start_time % 60)|int) }}
+                            </p>
+                            {% endif %}
+                            <p class="card-text">{{ source.document[:300] }}...</p>
+                            <small class="text-muted">Similarity: {{ '%.1f'|format(source.similarity * 100) }}%</small>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
